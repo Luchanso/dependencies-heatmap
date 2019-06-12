@@ -14,4 +14,4 @@ jobs:
         - git remote set-url origin https://${GH_TOKEN}@github.com/Luchanso/dependencies-heatmap.git > /dev/null 2>&1
         - yarn release
         - git push origin master --quiet --follow-tags
-      if: branch = feature/cicd AND commit_message =~ /^((?!chore\(release\). \d\.\d\.\d).)*$/
+      if: branch = master AND commit_message =~ /^((?!chore\(release\). \d\.\d\.\d).)*$/
