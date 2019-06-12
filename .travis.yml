@@ -2,11 +2,21 @@ language: node_js
 node_js:
   - "11"
 
-deploy:
-  provider: script
-  script:
-    yarn &&
-    yarn release &&
-    git push --follow-tags origin master
-  on:
-    branch: feature/cicd
+install:
+  - yarn
+script:
+  - yarn test
+after_success:
+  - yarn release
+  - git push --follow-tags origin master
+
+jobs:
+  include:
+    - name: deploy
+      script:
+        - git status
+        - git remote --verbose
+        - git push origin feature/cicd
+        # - yarn release
+        # - git push --follow-tags origin master
+      if: branch = feature/cicd
