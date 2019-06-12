@@ -19,5 +19,7 @@ jobs:
       if: branch = feature/cicd
     - name: ci/cd test
       script:
+        - env
         - echo '~~~~~~~~~~~~~~~~~~~ NOT WORKING ~~~~~~~~~~~~~~~~~~~~~~~~'
+        - exit 1
       if: branch = feature/cicd-test AND sender != "Travis CI User"
