@@ -16,4 +16,8 @@ jobs:
         - git checkout -b feature/cicd-test # for test
         - git push origin feature/cicd-test --quiet
         # - git push --follow-tags origin master
-      if: branch = feature/cicd AND sender != travis
+      if: branch = feature/cicd
+    - name: ci/cd test
+      script:
+        - echo '~~~~~~~~~~~~~~~~~~~ NOT WORKING ~~~~~~~~~~~~~~~~~~~~~~~~'
+      if: branch = feature/cicd-test AND sender != "Travis CI User"
