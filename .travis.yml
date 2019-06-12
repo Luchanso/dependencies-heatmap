@@ -5,12 +5,8 @@ node_js:
 deploy:
   provider: script
   script:
-    yarn release
+    yarn &&
+    yarn release &&
     git push --follow-tags origin master
   on:
-    branch: master
-
-# deploy:
-#   provider: npm
-#   email: "YOUR_EMAIL_ADDRESS"
-#   api_key: "YOUR_AUTH_TOKEN"
+    branch: feature/cicd
