@@ -22,4 +22,4 @@ jobs:
         - env
         - echo '~~~~~~~~~~~~~~~~~~~ NOT WORKING ~~~~~~~~~~~~~~~~~~~~~~~~'
         - exit 1
-      if: 'branch = feature/cicd-test AND commit_message =~ /^((?!chore\(release\): \d\.\d\.\d).)*$/'
+      if: branch = feature/cicd-test AND tag IS blank
