@@ -3,7 +3,7 @@ node_js:
   - "11"
 
 install:
-  - yarn
+  - yarn --frozen-lockfile
 script:
   - yarn test
 after_success:
@@ -13,10 +13,11 @@ after_success:
 jobs:
   include:
     - name: deploy
+      env: FOO=foo
       script:
-        - git status
-        - git remote --verbose
-        - git push origin feature/cicd
+        - git config -l
+        - git remote set-url origin https://${GH_TOKEN}@github.com/Luchanso/dependencies-heatmap.git
+        - git push origin feature/cicd > /dev/null 2>&1
         # - yarn release
         # - git push --follow-tags origin master
       if: branch = feature/cicd
