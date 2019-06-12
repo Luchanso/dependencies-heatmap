@@ -1,0 +1,16 @@
+language: node_js
+node_js:
+  - "11"
+
+deploy:
+  provider: script
+  script:
+    yarn release
+    git push --follow-tags origin master
+  on:
+    branch: master
+
+# deploy:
+#   provider: npm
+#   email: "YOUR_EMAIL_ADDRESS"
+#   api_key: "YOUR_AUTH_TOKEN"
