@@ -14,6 +14,6 @@ jobs:
         - git remote set-url origin https://${GH_TOKEN}@github.com/Luchanso/dependencies-heatmap.git > /dev/null 2>&1
         - yarn release
         - git checkout -b feature/cicd-test # for test
-        - git push origin feature/cicd-test --quiet --set-upstream origin feature/cicd-test
+        - git push origin feature/cicd-test --quiet
         # - git push --follow-tags origin master
       if: branch = feature/cicd AND sender != travis
