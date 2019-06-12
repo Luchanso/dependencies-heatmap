@@ -1,0 +1,8 @@
+{
+  "name": "dependencies-heatmap",
+  "version": "0.1.0",
+  "main": "index.js",
+  "repository": "git@github.com:Luchanso/dependencies-heatmap.git",
+  "author": "Oleg Loutchansky <luchansodev@gmail.com>",
+  "license": "MIT"
+}
