@@ -6,18 +6,13 @@ install:
   - yarn --frozen-lockfile
 script:
   - yarn test
-after_success:
-  - yarn release
-  - git push --follow-tags origin master
 
 jobs:
   include:
     - name: deploy
-      env: FOO=foo
       script:
-        - git config -l
-        - git remote set-url origin https://${GH_TOKEN}@github.com/Luchanso/dependencies-heatmap.git
-        - git push origin feature/cicd > /dev/null 2>&1
-        # - yarn release
+        - git remote set-url origin https://${GH_TOKEN}@github.com/Luchanso/dependencies-heatmap.git > /dev/null 2>&1
+        - yarn release
+        - git push origin feature/cicd-test --quiet --set-upstream origin feature/cicd-test
         # - git push --follow-tags origin master
-      if: branch = feature/cicd
+      if: branch = feature/cicd AND sender != travis
