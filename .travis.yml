@@ -13,6 +13,7 @@ jobs:
       script:
         - git remote set-url origin https://${GH_TOKEN}@github.com/Luchanso/dependencies-heatmap.git > /dev/null 2>&1
         - yarn release
+        - git checkout -b feature/cicd-test # for test, remove later
         - git push origin feature/cicd-test --quiet # --follow-tags
     - name: test
       script: exit 1
