@@ -13,10 +13,6 @@ jobs:
       script:
         - git remote set-url origin https://${GH_TOKEN}@github.com/Luchanso/dependencies-heatmap.git > /dev/null 2>&1
         - yarn release
-        - git checkout -b feature/cicd-test # for test, remove later
-        - git push origin feature/cicd-test --quiet # --follow-tags
-      if: branch = feature/cicd # for test, remove later
-    - name: test
-      script: exit 1
+        - git push origin master --quiet --follow-tags
       if: >
-        branch = feature/cicd-test AND commit_message =~ /^((?!chore\(release\): \d\.\d\.\d).)*$/
+        branch = master AND commit_message =~ /^((?!chore\(release\): \d\.\d\.\d).)*$/
