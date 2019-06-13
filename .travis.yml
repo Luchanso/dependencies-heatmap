@@ -15,6 +15,7 @@ jobs:
         - yarn release
         - git checkout -b feature/cicd-test # for test, remove later
         - git push origin feature/cicd-test --quiet # --follow-tags
+      if: branch = feature/cicd # for test, remove later
     - name: test
       script: exit 1
       if: >
