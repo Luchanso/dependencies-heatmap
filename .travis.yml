@@ -11,6 +11,6 @@ jobs:
       script:
         - git remote set-url origin https://${GH_TOKEN}@github.com/Luchanso/dependencies-heatmap.git > /dev/null 2>&1
         - yarn release
-        - git push --quiet --follow-tags origin HEAD
+        - git push --quiet --follow-tags origin master
       if: >
         branch = master AND commit_message =~ /^((?!chore\(release\): \d\.\d\.\d).)*$/ AND type = push
