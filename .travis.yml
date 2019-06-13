@@ -2,13 +2,12 @@ language: node_js
 node_js:
   - "11"
 
-install:
-  - yarn --frozen-lockfile
-script:
-  - yarn test
-
 jobs:
   include:
+    - name: install
+      install: yarn --frozen-lockfile
+    - name: test
+      script: yarn test
     - name: deploy
       script:
         - git remote set-url origin https://${GH_TOKEN}@github.com/Luchanso/dependencies-heatmap.git > /dev/null 2>&1
