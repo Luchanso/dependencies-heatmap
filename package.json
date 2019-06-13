@@ -1,6 +1,6 @@
 {
   "name": "dependencies-heatmap",
-  "version": "0.2.0",
+  "version": "0.1.0",
   "private": false,
   "dependencies": {
     "react": "16.8.6",
@@ -11,10 +11,16 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "release": "standard-version"
   },
   "eslintConfig": {
     "extends": "react-app"
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
   },
   "browserslist": {
     "production": [
@@ -27,5 +33,11 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@commitlint/cli": "8.0.0",
+    "@commitlint/config-conventional": "8.0.0",
+    "husky": "2.4.1",
+    "standard-version": "6.0.1"
   }
 }
