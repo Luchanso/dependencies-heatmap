@@ -15,4 +15,4 @@ jobs:
         - yarn release
         - git push --quiet --follow-tags origin HEAD
       if: >
-        branch = master AND commit_message =~ /^((?!chore\(release\): \d\.\d\.\d).)*$/
+        branch = master AND commit_message =~ /^((?!chore\(release\): \d\.\d\.\d).)*$/ AND type = push
