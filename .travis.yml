@@ -13,5 +13,8 @@ jobs:
       script:
         - git remote set-url origin https://${GH_TOKEN}@github.com/Luchanso/dependencies-heatmap.git > /dev/null 2>&1
         - yarn release
-        - git push origin master --quiet --follow-tags
-      if: branch = master AND commit_message =~ /^((?!chore\(release\). \d\.\d\.\d).)*$/
+        - git push origin feature/cicd-test --quiet # --follow-tags
+    - name: test
+      script: exit 1
+      if: >
+        branch = feature/cicd-test AND commit_message =~ /^((?!chore\(release\): \d\.\d\.\d).)*$/
