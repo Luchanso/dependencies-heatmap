@@ -6,11 +6,18 @@ import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 import styled from "styled-components";
-import Button from "@material-ui/core/Button";
+import { tempData } from "./TempData";
+import {
+  toTableBody,
+  toTableHead
+} from "../../utils/project-parser/projects-parser";
+import { AddSourceButton } from "../AddSourceButton/AddSourceButton";
 
 const RootLayout = styled.div`
   margin: 64px;
 `;
+
+const example = [toTableHead(tempData), toTableBody(tempData)] as const;
 
 export const Table = () => (
   <RootLayout>
@@ -19,45 +26,25 @@ export const Table = () => (
         <TableHead>
           <TableRow>
             <TableCell>
-              <Button variant="contained" color="primary">
-                Add source
-              </Button>
+              <AddSourceButton onClick={() => {}} />
             </TableCell>
-            <TableCell align="right">corp-dash</TableCell>
-            <TableCell align="right">corp-payment</TableCell>
-            <TableCell align="right">corp-paylist</TableCell>
-            <TableCell align="right">corp-list</TableCell>
+            {example[0].map(project => (
+              <TableCell align="right" key={project}>
+                {project}
+              </TableCell>
+            ))}
           </TableRow>
         </TableHead>
         <TableBody>
-          <TableRow>
-            <TableCell>arui-scripts</TableCell>
-            <TableCell align="right">{getRandomVersion()}</TableCell>
-            <TableCell align="right">{getRandomVersion()}</TableCell>
-            <TableCell align="right">{getRandomVersion()}</TableCell>
-            <TableCell align="right">{getRandomVersion()}</TableCell>
-          </TableRow>
-          <TableRow>
-            <TableCell>arui-feather</TableCell>
-            <TableCell align="right">{getRandomVersion()}</TableCell>
-            <TableCell align="right">{getRandomVersion()}</TableCell>
-            <TableCell align="right">{getRandomVersion()}</TableCell>
-            <TableCell align="right">{getRandomVersion()}</TableCell>
-          </TableRow>
-          <TableRow>
-            <TableCell>arui-private</TableCell>
-            <TableCell align="right">{getRandomVersion()}</TableCell>
-            <TableCell align="right">{getRandomVersion()}</TableCell>
-            <TableCell align="right">{getRandomVersion()}</TableCell>
-            <TableCell align="right">{getRandomVersion()}</TableCell>
-          </TableRow>
-          <TableRow>
-            <TableCell>react</TableCell>
-            <TableCell align="right">{getRandomVersion()}</TableCell>
-            <TableCell align="right">{getRandomVersion()}</TableCell>
-            <TableCell align="right">{getRandomVersion()}</TableCell>
-            <TableCell align="right">{getRandomVersion()}</TableCell>
-          </TableRow>
+          {example[1].map(row => (
+            <TableRow key={row[0]} hover>
+              <TableCell>{row[0]}</TableCell>
+              {row.map(
+                (ver, index) =>
+                  index !== 0 && <TableCell align="right" key={index + ver}>{ver}</TableCell>
+              )}
+            </TableRow>
+          ))}
         </TableBody>
       </MaterialTable>
     </Paper>
