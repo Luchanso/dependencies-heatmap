@@ -4,5 +4,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo tests not found in backend"
+  },
+  "dependencies": {
+    "apollo-server": "^2.6.4",
+    "graphql": "^14.3.1"
   }
 }
