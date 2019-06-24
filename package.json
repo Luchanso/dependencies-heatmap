@@ -1,10 +1,14 @@
 {
   "private": true,
   "name": "dependencies-heatmap",
+  "license": "MIT",
   "devDependencies": {
     "@commitlint/cli": "8.0.0",
     "@commitlint/config-conventional": "8.0.0",
     "husky": "2.4.1"
+  },
+  "scripts": {
+    "test": "yarn workspaces run test"
   },
   "husky": {
     "hooks": {
