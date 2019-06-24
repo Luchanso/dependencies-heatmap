@@ -1,5 +1,5 @@
 {
-  "name": "dependencies-heatmap",
+  "name": "client",
   "version": "0.3.0",
   "private": true,
   "dependencies": {
