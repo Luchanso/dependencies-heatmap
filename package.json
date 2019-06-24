@@ -1,57 +1,17 @@
 {
+  "private": true,
   "name": "dependencies-heatmap",
-  "version": "0.3.0",
-  "private": false,
-  "dependencies": {
-    "@material-ui/core": "4.1.2",
-    "react": "16.8.6",
-    "react-dom": "16.8.6",
-    "react-scripts": "3.0.1",
-    "styled-components": "4.3.2"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "release": "standard-version"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
+  "devDependencies": {
+    "@commitlint/cli": "8.0.0",
+    "@commitlint/config-conventional": "8.0.0",
+    "husky": "2.4.1"
   },
   "husky": {
     "hooks": {
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
     }
   },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  },
-  "devDependencies": {
-    "@commitlint/cli": "8.0.0",
-    "@commitlint/config-conventional": "8.0.0",
-    "@types/enzyme": "3.9.4",
-    "@types/enzyme-adapter-react-16": "1.0.5",
-    "@types/jest": "24.0.15",
-    "@types/node": "12.0.10",
-    "@types/react": "16.8.22",
-    "@types/react-dom": "16.8.4",
-    "@types/react-router-dom": "4.3.4",
-    "@types/styled-components": "4.1.16",
-    "enzyme": "3.10.0",
-    "enzyme-adapter-react-16": "1.14.0",
-    "husky": "2.5.0",
-    "react-router-dom": "5.0.1",
-    "standard-version": "6.0.1",
-    "typescript": "3.5.2"
-  }
+  "workspaces": [
+    "packages/*"
+  ]
 }
