@@ -3,10 +3,18 @@
   "version": "0.1.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo tests not found in backend"
+    "start": "cross-env NODE_ENV=development ts-node src/index",
+    "test": "echo backend tests not exist"
   },
   "dependencies": {
     "apollo-server": "^2.6.4",
-    "graphql": "^14.3.1"
+    "graphql": "^14.3.1",
+    "ts-node": "^8.3.0",
+    "typescript": "^3.5.2"
+  },
+  "devDependencies": {
+    "@types/graphql": "^14.2.2",
+    "casual": "^1.6.2",
+    "cross-env": "^5.2.0"
   }
 }
