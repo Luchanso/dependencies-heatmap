@@ -1,24 +1,18 @@
-export const resolvers = {
+import { IResolvers } from "graphql-tools";
+// import { DataSources } from "./datasources";
+
+// type Context = {
+//   dataSources: DataSources
+// }
+
+export const resolvers: IResolvers<any, any> = {
   Query: {
-    projects: (_, { names }: { names: string[] }) =>
-      names.reduce(
-        (prev, next) => [
-          ...prev,
-          {
-            name: next,
-            dependencies: [
-              {
-                name: "arui-feather",
-                version: "21.3.2"
-              },
-              {
-                name: "react",
-                version: "16.8.3"
-              }
-            ]
-          }
-        ],
-        []
-      )
+    projects: (
+      _,
+      args: { names: string[]; dependencies: string[] },
+      { dataSources }
+    ) => {
+      return null;
+    }
   }
 };
