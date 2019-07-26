@@ -1,9 +1,10 @@
 import { ApolloServer } from "apollo-server";
-import { typeDefs } from "./schema";
+import { dataSources } from "./datasources";
+import { mocks } from "./mocks";
 import { resolvers } from "./resolvers";
-import { mocks } from './mocks';
+import { typeDefs } from "./schema";
 import { isDevelopment } from "./utils";
-import { dataSources } from './datasources';
+import logger from "./utils/logger";
 
 const server = new ApolloServer({
   typeDefs,
@@ -14,5 +15,5 @@ const server = new ApolloServer({
 });
 
 server.listen().then(({ url }) => {
-  console.log(`🚀 Server ready at ${url}`);
+  logger.info(`🚀  Server ready at ${url}`);
 });
