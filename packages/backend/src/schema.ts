@@ -2,7 +2,7 @@ import { gql } from "apollo-server";
 
 export const typeDefs = gql`
   type Query {
-    projects(names: [String], dependencies: [String]): [Project]
+    projects(gitUrls: [String], dependencies: [String]): [Project]
   }
 
   type Dependency {

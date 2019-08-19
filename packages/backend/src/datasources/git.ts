@@ -1,28 +1,27 @@
 import { DataSource } from "apollo-datasource";
 import simplegit from "simple-git/promise";
 import fs from "fs";
-import rimraf from "rimraf";
-
-const TEMP_DIRECTORY = process.env.TEMP_DIRECTORY || "./temp";
+import del from "del";
+import { getTempDirectory } from "../utils/files";
 
 export class GitApi extends DataSource {
-  git: simplegit.SimpleGit = simplegit();
+  private git: simplegit.SimpleGit = simplegit();
 
-  update({ url, name }) {
-    const filepath = `${TEMP_DIRECTORY}/${name}`;
+  async update({ url, name }) {
+    const filepath = getTempDirectory(name);
 
-    if (!fs.existsSync(filepath)) {
-      this.git.clone(url, filepath, ["--depth", "1"]);
-    } else {
-      // TODO: temporial hack, remove it in feature
-      rimraf(filepath, console.log);
-      this.git.clone(url, filepath, ["--depth", "1"]);
+    // TODO: Обновлять репозиторий и хранить 30 последних коммитов,
+    // а не удалять и скачивать заново
+    if (fs.existsSync(filepath)) {
+      await del(filepath);
     }
+
+    return this.git.clone(url, filepath, ["--depth", "1"]);
   }
 }
 
-const a = new GitApi();
-a.update({
-  url: "https://github.com/Luchanso/work-tools",
-  name: "work-tools"
-});
+// const a = new GitApi();
+// a.update({
+//   url: "https://github.com/Luchanso/work-tools",
+//   name: "work-tools"
+// });
