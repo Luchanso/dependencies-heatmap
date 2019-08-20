@@ -4,8 +4,22 @@ import fs from "fs";
 import del from "del";
 import { getTempDirectory } from "../utils/files";
 
+type GitConfig = {
+  [key: string]: string;
+};
+
 export class GitApi extends DataSource {
   private git: simplegit.SimpleGit = simplegit();
+
+  constructor(gitConfig?: GitConfig) {
+    super();
+
+    if (gitConfig) {
+      Object.entries(gitConfig).forEach(([key, value]) =>
+        this.git.addConfig(key, value)
+      );
+    }
+  }
 
   async update({ url, name }) {
     const filepath = getTempDirectory(name);
