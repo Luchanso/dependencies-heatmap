@@ -41,7 +41,7 @@
     "@types/styled-components": "4.1.19",
     "enzyme": "3.10.0",
     "enzyme-adapter-react-16": "1.14.0",
-    "react-router-dom": "5.0.1",
+    "react-router-dom": "5.1.0",
     "typescript": "3.6.3"
   }
 }
