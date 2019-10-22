@@ -19,7 +19,7 @@
   },
   "devDependencies": {
     "@types/graphql": "14.2.3",
-    "@types/node": "12.7.12",
+    "@types/node": "12.11.5",
     "@types/rimraf": "2.0.2",
     "casual": "1.6.2",
     "cross-env": "6.0.3"
