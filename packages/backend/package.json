@@ -9,9 +9,13 @@
     "clean": "rm -rf ./temp"
   },
   "dependencies": {
-    "apollo-server": "^2.6.4",
+    "@luchanso/latest-version": "^5.1.1",
+    "apollo-datasource": "^0.6.3",
+    "apollo-server": "^2.9.7",
     "del": "^5.0.0",
     "graphql": "^14.3.1",
+    "graphql-tools": "^4.0.6",
+    "package-json": "^6.5.0",
     "simple-git": "^1.116.0",
     "ts-node": "^8.3.0",
     "typescript": "^3.5.2",
