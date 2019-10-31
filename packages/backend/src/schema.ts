@@ -8,8 +8,8 @@ export const typeDefs = gql`
       registry: String
     ): [Dependency]
 
-    getDependenciesJsonFromGit(
-
+    getDependenciesListFromGit(
+      gitUrls: [String]!
     ): [Dependency]
   }
 
