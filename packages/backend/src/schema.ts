@@ -2,16 +2,25 @@ import { gql } from "apollo-server";
 
 export const typeDefs = gql`
   type Query {
-    projects(names: [String], dependencies: [String]): [Project]
+    # Дай мне актуальную версию зависимостей
+    getLastDependenciesVersion(
+      dependencies: [String]!
+      registry: String
+    ): [Dependency]
+
+    getDependenciesMapFromGit(
+      gitUrls: [String]!
+      dependencies: [String]
+    ): [DependenciesMap]
+  }
+
+  type DependenciesMap {
+    gitUrl: String
+    dependencies: [Dependency]
   }
 
   type Dependency {
     name: String
     version: String
-  }
-
-  type Project {
-    name: String
-    dependencies: [Dependency]
   }
 `;

@@ -1,18 +1,17 @@
 import { IResolvers } from "graphql-tools";
-// import { DataSources } from "./datasources";
+import { DataSources } from "./datasources";
+import { getLastDependenciesVersion } from "./resolvers/getLastDependenciesVersion";
+import { getDependenciesMapFromGit } from "./resolvers/getDependenciesMapFromGit";
 
-// type Context = {
-//   dataSources: DataSources
-// }
+export type Context = {
+  dataSources: DataSources;
+};
+
+// const btoa = (source: string) => Buffer.from(source).toString("base64");
 
 export const resolvers: IResolvers<any, any> = {
   Query: {
-    projects: (
-      _,
-      args: { names: string[]; dependencies: string[] },
-      { dataSources }
-    ) => {
-      return null;
-    }
+    getLastDependenciesVersion,
+    getDependenciesMapFromGit
   }
 };
