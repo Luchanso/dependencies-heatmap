@@ -1,7 +1,9 @@
 import { IResolvers } from "graphql-tools";
 import { DataSources } from "./datasources";
+import { getLastDependenciesVersion } from "./resolvers/getLastDependenciesVersion";
+import { getDependenciesMapFromGit } from "./resolvers/getDependenciesMapFromGit";
 
-type Context = {
+export type Context = {
   dataSources: DataSources;
 };
 
@@ -9,18 +11,7 @@ type Context = {
 
 export const resolvers: IResolvers<any, any> = {
   Query: {
-    getDependenciesVersion: async (
-      _,
-      args: {
-        dependencies: string[];
-        registry?: string;
-      },
-      { dataSources }: Context
-    ) => {
-      return await dataSources.npm.getLastVersions(
-        args.dependencies,
-        args.registry
-      );
-    }
+    getLastDependenciesVersion,
+    getDependenciesMapFromGit
   }
 };
