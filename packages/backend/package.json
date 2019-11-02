@@ -23,7 +23,7 @@
     "winston": "^3.2.1"
   },
   "devDependencies": {
-    "@types/btoa": "^1.2.3",
+    "@types/btoa": "1.2.3",
     "@types/graphql": "14.2.3",
     "@types/node": "12.11.5",
     "@types/rimraf": "2.0.2",
