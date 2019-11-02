@@ -26,7 +26,7 @@
     "@types/btoa": "1.2.3",
     "@types/graphql": "14.2.3",
     "@types/node": "12.11.5",
-    "@types/rimraf": "2.0.2",
+    "@types/rimraf": "2.0.3",
     "casual": "1.6.2",
     "cross-env": "6.0.3"
   }
