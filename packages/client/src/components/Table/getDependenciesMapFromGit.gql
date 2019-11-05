@@ -1,0 +1,15 @@
+{
+  getDependenciesMapFromGit(
+    gitUrls: [
+      "git@github.com:alfa-laboratory/arui-feather.git"
+      "ssh://git@git.moscow.alfaintra.net/corp-payment/corp-payment-ui.git"
+    ]
+    dependencies: ["prop-types"]
+  ) {
+    gitUrl
+    dependencies {
+      name
+      version
+    }
+  }
+}
