@@ -5,6 +5,7 @@ import TableBody from "@material-ui/core/TableBody";
 import TableCell from "@material-ui/core/TableCell";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
+import CircularProgress from '@material-ui/core/CircularProgress';
 import { loader } from "graphql.macro";
 import React from "react";
 import styled from "styled-components";
@@ -24,21 +25,17 @@ export const Table = () => {
   console.log(data);
 
   if (loading) {
-    return <React.Fragment>loading</React.Fragment>;
+    return <CircularProgress />;
   }
   if (error) {
     return <React.Fragment>{error.message.toString()}</React.Fragment>
   }
-  if (data) {
-    return (
-      <Paper style={{ padding: '8px 16px', marginBottom: 24 }}>
-        <pre>data: { data && JSON.stringify(data, null, 4) }</pre>
-      </Paper>
-    )
-  }
 
   return (
     <RootLayout>
+      <Paper style={{ padding: '8px 16px', marginBottom: 24 }}>
+        <pre>data: { data && JSON.stringify(data, null, 4) }</pre>
+      </Paper>
       <Paper>
         <MaterialTable size="small">
           <TableHead>
