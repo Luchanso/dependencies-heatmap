@@ -6,7 +6,7 @@ type Props = {
 };
 
 /**
- * Button wich add sources
+ * Button which add sources
  */
 export const AddSourceButton = ({ onClick }: Props) => (
   <Button variant="contained" color="primary" onClick={onClick}>
