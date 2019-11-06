@@ -8,7 +8,7 @@ export const typeDefs = gql`
       registry: String
     ): [Dependency]
 
-    getDependenciesMapFromGit(
+    dependenciesMap(
       gitUrls: [String]!
       dependencies: [String]
     ): [DependenciesMap]

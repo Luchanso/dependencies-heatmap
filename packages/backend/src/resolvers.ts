@@ -1,7 +1,7 @@
 import { IResolvers } from "graphql-tools";
 import { DataSources } from "./datasources";
 import { getLastDependenciesVersion } from "./resolvers/getLastDependenciesVersion";
-import { getDependenciesMapFromGit } from "./resolvers/getDependenciesMapFromGit";
+import { dependenciesMap } from "./resolvers/dependenciesMap";
 
 export type Context = {
   dataSources: DataSources;
@@ -12,6 +12,6 @@ export type Context = {
 export const resolvers: IResolvers<any, any> = {
   Query: {
     getLastDependenciesVersion,
-    getDependenciesMapFromGit
+    dependenciesMap
   }
 };

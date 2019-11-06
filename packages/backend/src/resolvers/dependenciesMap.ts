@@ -13,7 +13,7 @@ const createFilterByDependencies = (dependenciesFilter: string[]) => (item: {
   )
 });
 
-export const getDependenciesMapFromGit = async (
+export const dependenciesMap = async (
   _,
   args: {
     gitUrls: string[];

@@ -1,15 +1,20 @@
 import React from "react";
 import Button from "@material-ui/core/Button";
-
-type Props = {
-  onClick: () => void;
-};
+import { useHistory } from "react-router";
 
 /**
  * Button which add sources
  */
-export const AddSourceButton = ({ onClick }: Props) => (
-  <Button variant="contained" color="primary" onClick={onClick}>
-    Add source
-  </Button>
-);
+export const AddSourceButton = () => {
+  const history = useHistory();
+
+  return (
+    <Button
+      variant="contained"
+      color="primary"
+      onClick={() => history.push("/add")}
+    >
+      Add source
+    </Button>
+  );
+};

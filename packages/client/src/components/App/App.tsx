@@ -5,7 +5,7 @@ import { client } from "../../apollo";
 import { Heatmap } from "../Heatmap/Heatmap";
 import { AddPage } from "../AddPage/AddPage";
 
-export const Router = () => {
+export const App = () => {
   return (
     <ApolloProvider client={client}>
       <BrowserRouter>

@@ -1,0 +1,16 @@
+{
+  dependenciesMap(
+    gitUrls: ["https://github.com/Luchanso/dota-inside.git", "git@github.com:odota/web.git"]
+    dependencies: [
+      "react"
+      "react-dom"
+      "styled-components"
+    ]
+  ) {
+    gitUrl
+    dependencies {
+      name
+      version
+    }
+  }
+}
