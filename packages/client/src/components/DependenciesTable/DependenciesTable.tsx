@@ -3,15 +3,9 @@ import { TableBody, TableCell, TableRow, Table } from "@material-ui/core";
 import { loader } from "graphql.macro";
 import React from "react";
 import { RootPaper, StyledTableHead } from "./styled";
-import {
-  toTableBody,
-  toTableHead
-} from "../../utils/project-parser/projects-parser";
 import { AddSourceButton } from "../AddSourceButton/AddSourceButton";
-import { tempData } from "./TempData";
 import { SkeletonTable } from "./SkeletonTable";
 
-const example = [toTableHead(tempData), toTableBody(tempData)] as const;
 const query = loader("./dependenciesMap.gql");
 
 export const DependenciesTable = () => {
