@@ -1,10 +1,9 @@
 import { DataSource } from "apollo-datasource";
-import simplegit from "simple-git/promise";
-import fs from "fs";
-import del from "del";
 import btoa from "btoa";
-import { getTempDirectory } from "../utils/files";
+import fs from "fs";
+import simplegit from "simple-git/promise";
 import { promisify } from "util";
+import { getTempDirectory } from "../utils/files";
 
 const fsExists = promisify(fs.exists);
 const fsReadFile = promisify(fs.readFile);
@@ -15,6 +14,12 @@ type GitConfig = {
 
 type PackageJson = {
   dependencies: {
+    [key: string]: string;
+  };
+  peerDependencies: {
+    [key: string]: string;
+  };
+  devDependencies: {
     [key: string]: string;
   };
 };
@@ -34,24 +39,40 @@ export class GitApi extends DataSource {
 
   async update(url, name) {
     const filepath = getTempDirectory(name);
+    console.log('Start worker:', name);
 
     // TODO: Обновлять репозиторий и хранить 30 последних коммитов,
     // а не удалять и скачивать заново
     if (await fsExists(filepath)) {
-      await del(filepath);
+      console.log('Not clonned', name);
+      return Promise.resolve();
     }
 
+    console.log('Start clone:', name);
     return this.git.clone(url, filepath, ["--depth", "1"]);
   }
 
   async getPackageJsonDependencies(name: string) {
+    console.log('-'.repeat(80));
+    console.log(`Request start, params: { name: ${name}}`);
+
     const filepath = getTempDirectory(name);
+
+    console.log(`Filepath: ${filepath}`);
 
     const packageJson: PackageJson = JSON.parse(
       (await fsReadFile(`${filepath}/package.json`)).toString()
     );
 
-    return Object.entries(packageJson.dependencies).map(item => ({
+    console.log(`packageJSON: ${JSON.stringify(packageJson, null, 2)}`);
+
+    const allDependencies = {
+      ...(packageJson.dependencies || {}),
+      ...(packageJson.devDependencies || {}),
+      ...(packageJson.peerDependencies || {}),
+    };
+
+    return Object.entries(allDependencies).map(item => ({
       name: item[0],
       version: item[1]
     }));
