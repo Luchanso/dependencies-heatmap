@@ -19,6 +19,9 @@ type Project = {
 
 const query = loader("./dependenciesMap.gql");
 
+const projectNameSelector = (gitUrl: string) =>
+  gitUrl.substr(gitUrl.lastIndexOf('/') + 1).replace('.git', '');
+
 const dataTableSelector = (
   data: Project[],
   libs: string[]
@@ -38,7 +41,7 @@ const dataTableSelector = (
       });
 
       return {
-        headers: [...result.headers, project.gitUrl],
+        headers: [...result.headers, projectNameSelector(project.gitUrl)],
         columns: [...result.columns, column]
       };
     },
