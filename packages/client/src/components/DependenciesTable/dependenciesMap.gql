@@ -1,11 +1,7 @@
-{
+query($projects: [String]!, $libs: [String]!) {
   dependenciesMap(
-    gitUrls: ["https://github.com/Luchanso/dota-inside.git", "git@github.com:odota/web.git"]
-    dependencies: [
-      "react"
-      "react-dom"
-      "styled-components"
-    ]
+    gitUrls: $projects
+    dependencies: $libs
   ) {
     gitUrl
     dependencies {

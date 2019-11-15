@@ -1,15 +1,21 @@
-import { useQuery } from "@apollo/react-hooks";
-import { TableBody, TableCell, TableRow, Table } from "@material-ui/core";
-import { loader } from "graphql.macro";
+import { Table, TableBody, TableCell, TableRow } from "@material-ui/core";
 import React from "react";
-import { RootPaper, StyledTableHead } from "./styled";
 import { AddSourceButton } from "../AddSourceButton/AddSourceButton";
 import { SkeletonTable } from "./SkeletonTable";
-
-const query = loader("./dependenciesMap.gql");
+import { RootPaper, StyledTableHead } from "./styled";
+import { useDependenciesMapTable } from "./useDependenciesMap";
 
 export const DependenciesTable = () => {
-  const { loading, error, data } = useQuery(query);
+  const projects = [
+    "https://github.com/Luchanso/dota-ai-pick.git",
+    "https://github.com/Luchanso/invest-calculator.git",
+    "https://github.com/alfa-laboratory/thrift-api-ui"
+  ];
+  const libs = ["react", 'react-dom', 'arui-scripts', 'eslint', 'typescript'];
+  const { loading, error, columns, headers } = useDependenciesMapTable(
+    projects,
+    libs
+  );
 
   if (loading) {
     return <SkeletonTable />;
@@ -19,23 +25,11 @@ export const DependenciesTable = () => {
     return <span>{error.message}</span>;
   }
 
-  const allDependencies = data.dependenciesMap.reduce(
-    (result: string[], project: any) => [...result, ...project.dependencies],
-    []
-  );
-  const allProjectsNames = data.dependenciesMap.map(
-    (project: any) => project.gitUrl
-  );
-  const rows = allDependencies.map((dependency: any) => [
-    dependency.name,
-    ...data.dependenciesMap.map(
-      (project: any) =>
-        project.dependencies.find(({ name }: any) => name === dependency.name)
-          .version
-    )
-  ]);
+  if (!columns || !headers) {
+    return <span>Unknown data</span>;
+  }
 
-  console.log(rows);
+  console.log(libs, columns, headers);
 
   return (
     <RootPaper>
@@ -45,7 +39,7 @@ export const DependenciesTable = () => {
             <TableCell>
               <AddSourceButton />
             </TableCell>
-            {allProjectsNames.map((name: any) => (
+            {headers.map(name => (
               <TableCell align="right" key={name}>
                 {name}
               </TableCell>
@@ -53,14 +47,12 @@ export const DependenciesTable = () => {
           </TableRow>
         </StyledTableHead>
         <TableBody>
-          {rows.map((row: any) => (
-            <TableRow hover>
-              {row.map(
-                (item: any, index: number) =>
-                  (index === 0 && <TableCell>{item} </TableCell>) || (
-                    <TableCell align="right">{item}</TableCell>
-                  )
-              )}
+          {libs.map((libName: string, rowNumber: number) => (
+            <TableRow hover key={libName}>
+              <TableCell>{libName}</TableCell>
+              {columns.map(columnItem => (
+                <TableCell align="right">{columnItem[rowNumber]}</TableCell>
+              ))}
             </TableRow>
           ))}
         </TableBody>
