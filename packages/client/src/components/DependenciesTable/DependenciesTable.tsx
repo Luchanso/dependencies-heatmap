@@ -39,8 +39,8 @@ export const DependenciesTable = () => {
             <TableCell>
               <AddSourceButton />
             </TableCell>
-            {headers.map(name => (
-              <TableCell align="right" key={name}>
+            {headers.map((name, headerNumber) => (
+              <TableCell align="right" key={name + headerNumber.toString()}>
                 {name}
               </TableCell>
             ))}
@@ -50,8 +50,8 @@ export const DependenciesTable = () => {
           {libs.map((libName: string, rowNumber: number) => (
             <TableRow hover key={libName}>
               <TableCell>{libName}</TableCell>
-              {columns.map(columnItem => (
-                <TableCell align="right">{columnItem[rowNumber]}</TableCell>
+              {columns.map((columnItem, columnNumber) => (
+                <TableCell align="right" key={libName + columnNumber.toString()}>{columnItem[rowNumber]}</TableCell>
               ))}
             </TableRow>
           ))}
