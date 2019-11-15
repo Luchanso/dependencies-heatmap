@@ -17,7 +17,7 @@ type Project = {
   }[];
 };
 
-const query = loader("./dependenciesMap.gql");
+export const query = loader("./dependenciesMap.gql");
 
 const projectNameSelector = (gitUrl: string) =>
   gitUrl.substr(gitUrl.lastIndexOf('/') + 1).replace('.git', '');
