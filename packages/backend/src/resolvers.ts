@@ -9,7 +9,7 @@ export type Context = {
 
 // const btoa = (source: string) => Buffer.from(source).toString("base64");
 
-export const resolvers: IResolvers<any, any> = {
+export const resolvers: IResolvers<any, Context> = {
   Query: {
     getLastDependenciesVersion,
     dependenciesMap

@@ -1,11 +1,21 @@
 import React from "react";
 import { BrowserRouter, Route } from "react-router-dom";
 import { ApolloProvider } from "@apollo/react-hooks";
-import { client } from "../../apollo";
+import { useApolloClientForProvider } from "../../apollo";
 import { Heatmap } from "../Heatmap/Heatmap";
 import { AddPage } from "../AddPage/AddPage";
 
 export const App = () => {
+  const [client, isLoading] = useApolloClientForProvider();
+
+  if (isLoading || !client) {
+    return (
+      <div>
+        Loading...
+      </div>
+    )
+  }
+
   return (
     <ApolloProvider client={client}>
       <BrowserRouter>

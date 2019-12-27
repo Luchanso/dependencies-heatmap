@@ -1,0 +1,3 @@
+mutation AddDependency($url: String!) {
+  addDependency(url: $url) @client
+}
