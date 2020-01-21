@@ -44,7 +44,7 @@ export class GitApi extends DataSource {
     // TODO: Обновлять репозиторий и хранить 30 последних коммитов,
     // а не удалять и скачивать заново
     if (await fsExists(filepath)) {
-      console.log('Not clonned', name);
+      console.log('Not cloned', name);
       return Promise.resolve();
     }
 
