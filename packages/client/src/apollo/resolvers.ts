@@ -1,7 +1,9 @@
 import { ApolloClient, InMemoryCache, Resolvers } from "apollo-boost";
 import { FragmentMap } from "apollo-utilities";
 import { FieldNode } from "graphql";
-import { addDependency } from "./mutation/addDependency";
+import { add } from "./mutation/add";
+import { projects } from "./query/projects";
+import { filteredLibs } from "./query/filteredLibs";
 
 export type Context = {
   cache: InMemoryCache;
@@ -16,6 +18,7 @@ export type Info = {
 
 export type BaseResolver<
   TArgs = any,
+  TReturn = any,
   TContext extends Context = Context,
   TRootValue = any,
   TInfo extends Info = Info
@@ -24,10 +27,14 @@ export type BaseResolver<
   args: TArgs,
   context: TContext,
   info?: TInfo
-) => any;
+) => TReturn;
 
 export const resolvers: Resolvers = {
   Mutation: {
-    addDependency
+    add
+  },
+  Query: {
+    projects,
+    filteredLibs
   }
 };

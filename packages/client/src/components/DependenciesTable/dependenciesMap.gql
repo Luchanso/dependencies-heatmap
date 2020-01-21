@@ -1,7 +1,11 @@
-query($projects: [String]!, $libs: [String]!) {
+query($projects: [String]!, $filteredLibs: [String]) {
+
+  projects @client @export(as: "projects")
+  filteredLibs @client @export(as: "filteredLibs")
+
   dependenciesMap(
     gitUrls: $projects
-    dependencies: $libs
+    dependenciesFilter: $filteredLibs
   ) {
     gitUrl
     dependencies {

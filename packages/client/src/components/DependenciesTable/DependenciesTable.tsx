@@ -6,16 +6,13 @@ import { RootPaper, StyledTableHead } from "./styled";
 import { useDependenciesMapTable } from "./useDependenciesMap";
 
 export const DependenciesTable = () => {
-  const projects = [
-    "https://github.com/Luchanso/dota-ai-pick.git",
-    "https://github.com/Luchanso/invest-calculator.git",
-    "https://github.com/alfa-laboratory/thrift-api-ui"
-  ];
-  const libs = ["react", 'react-dom', 'arui-scripts', 'eslint', 'typescript'];
-  const { loading, error, columns, headers } = useDependenciesMapTable(
-    projects,
-    libs
-  );
+  const {
+    loading,
+    error,
+    columns,
+    headers,
+    firstColumn
+  } = useDependenciesMapTable();
 
   if (loading) {
     return <SkeletonTable />;
@@ -25,11 +22,9 @@ export const DependenciesTable = () => {
     return <span>{error.message}</span>;
   }
 
-  if (!columns || !headers) {
+  if (!columns || !headers || !firstColumn) {
     return <span>Unknown data</span>;
   }
-
-  console.log(libs, columns, headers);
 
   return (
     <RootPaper>
@@ -47,11 +42,16 @@ export const DependenciesTable = () => {
           </TableRow>
         </StyledTableHead>
         <TableBody>
-          {libs.map((libName: string, rowNumber: number) => (
+          {firstColumn.map((libName: string, rowNumber: number) => (
             <TableRow hover key={libName}>
               <TableCell>{libName}</TableCell>
               {columns.map((columnItem, columnNumber) => (
-                <TableCell align="right" key={libName + columnNumber.toString()}>{columnItem[rowNumber]}</TableCell>
+                <TableCell
+                  align="right"
+                  key={libName + columnNumber.toString()}
+                >
+                  {columnItem[rowNumber]}
+                </TableCell>
               ))}
             </TableRow>
           ))}

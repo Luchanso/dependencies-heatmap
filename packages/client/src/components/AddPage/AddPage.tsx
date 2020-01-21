@@ -1,7 +1,5 @@
 import {
   Button,
-  Checkbox,
-  FormControlLabel,
   Grid,
   TextField,
   Typography
@@ -15,9 +13,7 @@ export const AddPage = () => {
   const [source, setSource] = useState("");
   const disabled = source.length === 0;
 
-  function handleChange({
-    target: { value }
-  }: ChangeEvent<HTMLInputElement>) {
+  function handleChange({ target: { value } }: ChangeEvent<HTMLInputElement>) {
     setSource(value);
   }
 
@@ -27,7 +23,7 @@ export const AddPage = () => {
   }
 
   function handleEnterKey({ key }: KeyboardEvent) {
-    if (key === 'Enter' && !disabled) {
+    if (key === "Enter" && !disabled) {
       handleAdd();
     }
   }
@@ -43,7 +39,7 @@ export const AddPage = () => {
             <Grid item>
               <TextField
                 id="source"
-                placeholder="git link or npm package name"
+                placeholder="git project link"
                 variant="outlined"
                 label="Source"
                 autoFocus
@@ -54,25 +50,15 @@ export const AddPage = () => {
                 onSubmit={handleAdd}
               />
             </Grid>
-            <Grid item>
-              <Grid container justify="space-between">
-                <Grid item>
-                  <FormControlLabel
-                    control={<Checkbox value="checkedA" />}
-                    label="Import all dependencies from package/git repository"
-                  />
-                </Grid>
-                <Grid item>
-                  <Button
-                    variant="contained"
-                    color="primary"
-                    onClick={handleAdd}
-                    disabled={disabled}
-                  >
-                    Add
-                  </Button>
-                </Grid>
-              </Grid>
+            <Grid item container direction="row-reverse">
+              <Button
+                variant="contained"
+                color="primary"
+                onClick={handleAdd}
+                disabled={disabled}
+              >
+                Add
+              </Button>
             </Grid>
           </Grid>
         </Grid>

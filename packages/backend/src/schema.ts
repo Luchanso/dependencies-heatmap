@@ -10,7 +10,7 @@ export const typeDefs = gql`
 
     dependenciesMap(
       gitUrls: [String]!
-      dependencies: [String]
+      dependenciesFilter: [String]
     ): [DependenciesMap]
   }
 
