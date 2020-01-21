@@ -17,14 +17,15 @@ export const dependenciesMap = async (
   _,
   args: {
     gitUrls: string[];
-    dependencies?: string[];
+    dependenciesFilter?: string[];
   },
   { dataSources }: Context
 ) => {
-  const result = await dataSources.git.getDependencies(args.gitUrls);
+  const { dependenciesFilter, gitUrls } = args;
+  const result = await dataSources.git.getDependencies(gitUrls);
 
-  if (args.dependencies) {
-    return result.map(createFilterByDependencies(args.dependencies));
+  if (dependenciesFilter) {
+    return result.map(createFilterByDependencies(dependenciesFilter));
   }
 
   return result;
