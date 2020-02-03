@@ -93,11 +93,7 @@ const QUERY = gql`
 `;
 
 export function useDependenciesMapTable(): DependenciesMapTable {
-  const { loading, error, data } = useQuery(QUERY, {
-    variables: {
-      projects: ["https://github.com/Luchanso/dota-ai-pick.git"]
-    }
-  });
+  const { loading, error, data } = useQuery(QUERY);
   const { dependenciesMap } = data || {};
 
   if (loading) {

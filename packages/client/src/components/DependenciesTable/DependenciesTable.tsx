@@ -4,6 +4,7 @@ import { AddSourceButton } from "../AddSourceButton/AddSourceButton";
 import { SkeletonTable } from "./SkeletonTable";
 import { RootPaper, StyledTableHead } from "./styled";
 import { useDependenciesMapTable } from "./useDependenciesMap";
+import { Filter } from "../Filter/Filter";
 
 export const DependenciesTable = () => {
   const {
@@ -28,6 +29,7 @@ export const DependenciesTable = () => {
 
   return (
     <RootPaper>
+      <Filter />
       <Table size="small" stickyHeader>
         <StyledTableHead>
           <TableRow>

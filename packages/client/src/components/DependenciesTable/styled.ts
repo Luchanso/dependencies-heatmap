@@ -3,6 +3,7 @@ import { TableHead, Paper } from "@material-ui/core";
 
 export const RootPaper = styled(Paper)`
   display: flex;
+  flex-direction: column;
   overflow-x: scroll;
   overflow-y: scroll;
   position: absolute;

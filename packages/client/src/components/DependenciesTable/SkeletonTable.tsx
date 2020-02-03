@@ -3,9 +3,11 @@ import { Skeleton } from '@material-ui/lab';
 import { RootPaper } from './styled';
 import { Table, TableHead, TableBody, TableRow, TableCell } from '@material-ui/core';
 import { AddSourceButton } from '../AddSourceButton/AddSourceButton';
+import { Filter } from '../Filter/Filter';
 
 export const SkeletonTable = () => (
   <RootPaper>
+    <Filter />
     <Table size="small" stickyHeader>
         <TableHead>
           <TableRow>
