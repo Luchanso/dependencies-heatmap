@@ -1,18 +1,24 @@
-import { TextField, Chip } from "@material-ui/core";
-import React from "react";
+import { Chip, TextField } from "@material-ui/core";
 import { Autocomplete } from "@material-ui/lab";
-import { useDependenciesMapTable } from "../DependenciesTable/useDependenciesMap";
+import React, { ChangeEvent } from "react";
+import { useFilters } from "./useFilters";
 
 export const Filter = () => {
-  const { firstColumn } = useDependenciesMapTable();
+  const { availableFilters, setFilters /*, filters */ } = useFilters();
+
+  function handleChange(event: ChangeEvent<{}>, value: string[]) {
+    setFilters(value);
+  }
 
   return (
     <Autocomplete
+      autoComplete
       id="filter"
       multiple
-      onChange={ (e, t) => console.log(t) }
-      options={ firstColumn }
-      getOptionLabel={ option => option }
+      options={availableFilters || []}
+      filterSelectedOptions
+      getOptionLabel={option => option}
+      onChange={handleChange}
       renderTags={(value: any[], getTagProps) =>
         value.map((option, index) => (
           <Chip label={option} color="primary" {...getTagProps({ index })} />
@@ -24,7 +30,6 @@ export const Filter = () => {
           placeholder="react, react-dom, redux, jest"
           variant="filled"
           label="filter"
-          autoFocus
           fullWidth
         />
       )}

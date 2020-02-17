@@ -7,7 +7,8 @@ const log = {
 
 export const STORE_KEYS = {
   projects: 'projects',
-  filteredLibs: 'filteredLibs'
+  filteredLibs: 'filteredLibs',
+  availableFilters: 'availableFilters'
 };
 
 export const getItem = <T>(key: string) => {
