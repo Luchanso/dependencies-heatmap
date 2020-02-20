@@ -156,7 +156,7 @@ export function useDependenciesMapTable(): DependenciesMapTable {
   const filteredFirstColumn =
     (filters && filters.length > 0 && getCommon(firstColumn, filters)) ||
     firstColumn;
-  const { headers, columns } = dataTableSelector(dependenciesMap, firstColumn);
+  const { headers, columns } = dataTableSelector(dependenciesMap, filteredFirstColumn);
 
   const result = {
     loading,
