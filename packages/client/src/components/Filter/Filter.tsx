@@ -28,7 +28,7 @@ export const Filter = () => {
       renderInput={params => (
         <TextField
           {...params}
-          placeholder="react, react-dom, redux, jest"
+          placeholder={availableFilters?.slice(0, 3).join(', ')}
           variant="filled"
           label="filter"
           fullWidth
