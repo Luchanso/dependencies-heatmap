@@ -1,14 +1,11 @@
-import {
-  Button,
-  Grid,
-  TextField,
-  Typography
-} from "@material-ui/core";
-import React, { useState, ChangeEvent, KeyboardEvent } from "react";
-import { Container } from "./styled";
+import { Button, Grid, TextField, Typography } from "@material-ui/core";
+import React, { ChangeEvent, KeyboardEvent, useState } from "react";
+import { useHistory } from "react-router-dom";
+import { Container, Buttons } from "./styled";
 import { useDependenciesUpdater } from "./useDependenciesUpdater";
 
 export const AddPage = () => {
+  const history = useHistory();
   const [onAddDependency] = useDependenciesUpdater();
   const [source, setSource] = useState("");
   const disabled = source.length === 0;
@@ -26,6 +23,10 @@ export const AddPage = () => {
     if (key === "Enter" && !disabled) {
       handleAdd();
     }
+  }
+
+  function handleGoToMain() {
+    history.push("/");
   }
 
   return (
@@ -51,14 +52,23 @@ export const AddPage = () => {
               />
             </Grid>
             <Grid item container direction="row-reverse">
-              <Button
-                variant="contained"
-                color="primary"
-                onClick={handleAdd}
-                disabled={disabled}
-              >
-                Add
-              </Button>
+              <Buttons>
+                <Button
+                  variant="text"
+                  color="default"
+                  onClick={handleGoToMain}
+                >
+                  Show dependencies
+                </Button>
+                <Button
+                  variant="contained"
+                  color="primary"
+                  onClick={handleAdd}
+                  disabled={disabled}
+                >
+                  Add
+                </Button>
+              </Buttons>
             </Grid>
           </Grid>
         </Grid>

@@ -1,10 +1,11 @@
 import { Table, TableBody, TableCell, TableRow } from "@material-ui/core";
 import React from "react";
 import { AddSourceButton } from "../AddSourceButton/AddSourceButton";
+import { Filter } from "../Filter/Filter";
+import { EmptyState } from "./EmptyState";
 import { SkeletonTable } from "./SkeletonTable";
 import { RootPaper, StyledTableHead } from "./styled";
 import { useDependenciesMapTable } from "./useDependenciesMap";
-import { Filter } from "../Filter/Filter";
 
 export const DependenciesTable = () => {
   const {
@@ -12,7 +13,8 @@ export const DependenciesTable = () => {
     error,
     columns,
     headers,
-    firstColumn
+    firstColumn,
+    isEmpty
   } = useDependenciesMapTable();
 
   if (loading) {
@@ -23,8 +25,8 @@ export const DependenciesTable = () => {
     return <span>{error.message}</span>;
   }
 
-  if (!columns || !headers || !firstColumn) {
-    return <span>Unknown data</span>;
+  if (isEmpty || !headers || !columns || !firstColumn) {
+    return <EmptyState />;
   }
 
   return (
