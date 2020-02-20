@@ -8,7 +8,8 @@ const log = {
 
 export const add: BaseResolver<{ url: string; }> = (
   _,
-  { url }
+  { url },
+  { cache }
 ) => {
   const projects = getItem<string[]>(STORE_KEYS.projects) || [];
   log.addProjects("url", url);
@@ -18,4 +19,6 @@ export const add: BaseResolver<{ url: string; }> = (
 
   log.addProjects("saved");
   log.addProjects("new projects", projects);
+
+  cache.writeData({ data: { projects }});
 };

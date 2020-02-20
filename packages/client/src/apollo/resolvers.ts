@@ -3,7 +3,10 @@ import { FragmentMap } from "apollo-utilities";
 import { FieldNode } from "graphql";
 import { add } from "./mutation/add";
 import { projects } from "./query/projects";
-import { filteredLibs } from "./query/filteredLibs";
+import { availableFilters } from "./query/availableFilters";
+import { updateFilters } from "./mutation/updateFilters";
+import { updateAvailableFilters } from "./mutation/updateAvailableFilters";
+import { filters } from "./query/filters";
 
 export type Context = {
   cache: InMemoryCache;
@@ -31,10 +34,13 @@ export type BaseResolver<
 
 export const resolvers: Resolvers = {
   Mutation: {
-    add
+    add,
+    updateFilters,
+    updateAvailableFilters
   },
   Query: {
     projects,
-    filteredLibs
+    availableFilters,
+    filters
   }
 };

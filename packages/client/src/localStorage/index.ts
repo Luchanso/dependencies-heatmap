@@ -7,7 +7,7 @@ const log = {
 
 export const STORE_KEYS = {
   projects: 'projects',
-  filteredLibs: 'filteredLibs',
+  filters: 'filters',
   availableFilters: 'availableFilters'
 };
 

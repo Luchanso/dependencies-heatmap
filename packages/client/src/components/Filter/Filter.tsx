@@ -4,7 +4,7 @@ import React, { ChangeEvent } from "react";
 import { useFilters } from "./useFilters";
 
 export const Filter = () => {
-  const { availableFilters, setFilters /*, filters */ } = useFilters();
+  const { availableFilters, setFilters, filters } = useFilters();
 
   function handleChange(event: ChangeEvent<{}>, value: string[]) {
     setFilters(value);
@@ -19,6 +19,7 @@ export const Filter = () => {
       filterSelectedOptions
       getOptionLabel={option => option}
       onChange={handleChange}
+      value={filters}
       renderTags={(value: any[], getTagProps) =>
         value.map((option, index) => (
           <Chip label={option} color="primary" {...getTagProps({ index })} />
