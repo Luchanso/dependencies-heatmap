@@ -74,7 +74,7 @@ const mocks: MockedResponse[] = [
   }
 ];
 
-test("should be render table", () => {
+test.skip("should be render table", () => {
   const wrapper = mount(
     <MemoryRouter>
       <MockedProvider addTypename={false} mocks={mocks}>
