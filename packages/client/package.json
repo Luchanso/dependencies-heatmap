@@ -23,7 +23,10 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "docker:build": "docker build -t dependencies-heatmap-client . ",
+    "docker:start": "docker run --name dependencies-heatmap-client -d -p 8080:80 dependencies-heatmap-client",
+    "docker:clean": "docker kill dependencies-heatmap-client && docker rm dependencies-heatmap-client"
   },
   "eslintConfig": {
     "extends": "react-app"
