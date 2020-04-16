@@ -8,6 +8,7 @@
     "husky": "4.2.3"
   },
   "scripts": {
+    "build-client": "yarn workspace client build",
     "test": "yarn workspaces run test"
   },
   "husky": {
