@@ -8,7 +8,8 @@
     "husky": "4.2.3"
   },
   "scripts": {
-    "test": "yarn workspaces run test"
+    "test": "yarn workspaces run test",
+    "build-front": "yarn workspace client run build"
   },
   "husky": {
     "hooks": {
