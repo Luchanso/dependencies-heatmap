@@ -4,18 +4,18 @@ import React, { ChangeEvent } from "react";
 import { useFilters } from "./useFilters";
 
 export const Filter = () => {
-  const { availableFilters, setFilters, filters } = useFilters();
+  const { availableFilters = [], setFilters, filters } = useFilters();
 
   function handleChange(event: ChangeEvent<{}>, value: string[]) {
     setFilters(value);
   }
 
   return (
-    <Autocomplete
+    <Autocomplete<string>
       autoComplete
       id="filter"
       multiple
-      options={availableFilters || []}
+      options={availableFilters}
       filterSelectedOptions
       getOptionLabel={option => option}
       onChange={handleChange}
