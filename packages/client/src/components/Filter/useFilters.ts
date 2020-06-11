@@ -44,7 +44,7 @@ export function useFilters() {
     GET_AVAILABLE_FILTERS_QUERY
   );
   // TODO: refactoring here
-  const filters = dataFilters?.filters;
+  const filters = dataFilters?.filters || undefined;
   const availableFilters = dataAvailableFilters?.availableFilters;
 
   function setFilters(filters: string[]) {

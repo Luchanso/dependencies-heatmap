@@ -131,7 +131,7 @@ export function useDependenciesMapTable(): DependenciesMapTable {
     };
   }
 
-  if ((!data && !loading) || (data && data.projects.length === 0)) {
+  if ((!data && !loading) || (data?.projects?.length === 0)) {
     return {
       loading,
       isEmpty: true
