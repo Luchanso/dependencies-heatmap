@@ -28,6 +28,7 @@ export const DependenciesTable = () => {
   if (isEmpty || !headers || !columns || !firstColumn) {
     return <EmptyState />;
   }
+  // debugger;
 
   return (
     <RootPaper>

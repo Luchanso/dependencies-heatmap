@@ -19,7 +19,7 @@ export const Filter = () => {
       filterSelectedOptions
       getOptionLabel={option => option}
       onChange={handleChange}
-      value={filters}
+      value={filters || undefined}
       renderTags={(value: any[], getTagProps) =>
         value.map((option, index) => (
           <Chip label={option} color="primary" {...getTagProps({ index })} />
