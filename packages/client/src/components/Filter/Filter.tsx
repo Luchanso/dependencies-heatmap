@@ -11,7 +11,7 @@ export const Filter = () => {
   }
 
   return (
-    <Autocomplete<string>
+    <Autocomplete
       autoComplete
       id="filter"
       multiple
