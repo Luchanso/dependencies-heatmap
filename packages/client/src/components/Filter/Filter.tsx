@@ -10,8 +10,6 @@ export const Filter = () => {
     setFilters(value);
   }
 
-  console.log(availableFilters, filters);
-
   return (
     <Autocomplete
       autoComplete
