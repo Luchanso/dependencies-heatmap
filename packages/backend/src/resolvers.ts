@@ -1,4 +1,4 @@
-import { IResolvers } from "graphql-tools";
+import { IResolvers } from "apollo-server";
 import { DataSources } from "./datasources";
 import { getLastDependenciesVersion } from "./resolvers/getLastDependenciesVersion";
 import { dependenciesMap } from "./resolvers/dependenciesMap";

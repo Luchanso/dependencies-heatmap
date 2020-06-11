@@ -1,4 +1,12 @@
-# Dependencie Manager
+# Dependencies Manager
+
+
+## install & start
+
+```
+yarn
+yarn start
+```
 
 [Project](https://github.com/Luchanso/dependencies-heatmap/projects/1)
 

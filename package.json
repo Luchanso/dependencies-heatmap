@@ -5,10 +5,14 @@
   "devDependencies": {
     "@commitlint/cli": "8.3.5",
     "@commitlint/config-conventional": "8.3.4",
-    "husky": "4.2.5"
+    "husky": "4.2.5",
+    "npm-run-all": "4.1.5"
   },
   "scripts": {
     "test": "yarn workspaces run test",
+    "start:client": "yarn workspace client run start",
+    "start:backend": "yarn workspace backend run start",
+    "start": "npm-run-all -p start:*",
     "build-front": "yarn workspace client run build"
   },
   "husky": {
