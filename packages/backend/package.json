@@ -5,7 +5,7 @@
   "scripts": {
     "start-dev": "cross-env NODE_ENV=development ts-node src/index",
     "start": "ts-node src/index",
-    "test": "echo backend tests not exist",
+    "test": "yarn tsc --noEmit",
     "clean": "rm -rf ./temp"
   },
   "dependencies": {
@@ -15,7 +15,6 @@
     "btoa": "1.2.1",
     "del": "5.1.0",
     "graphql": "15.1.0",
-    "graphql-tools": "6.0.9",
     "package-json": "6.5.0",
     "simple-git": "2.6.0",
     "ts-node": "8.10.2",
