@@ -12,8 +12,7 @@
     "test": "yarn workspaces run test",
     "start:client": "yarn workspace client run start",
     "start:backend": "yarn workspace backend run start",
-    "start": "npm-run-all -p start:*",
-    "build-front": "yarn workspace client run build"
+    "start": "npm-run-all -p start:*"
   },
   "husky": {
     "hooks": {
