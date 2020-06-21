@@ -1,10 +1,22 @@
 # Dependencies Manager
 
+## Use as docker
+### Backend
+```
+docker pull uchanso/dependencies-heatmap-backend:0.1.0
+```
 
-## install & start
+### Client
+```
+docker pull uchanso/dependencies-heatmap-client:0.1.0
+```
+
+## Development
 
 ```
-yarn
+git pull git@github.com:Luchanso/dependencies-heatmap.git
+cd dependencies-heatmap
+yarn install
 yarn start
 ```
 
