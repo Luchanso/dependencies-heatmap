@@ -14,7 +14,7 @@
     "apollo-server": "2.15.0",
     "btoa": "1.2.1",
     "del": "5.1.0",
-    "graphql": "15.1.0",
+    "graphql": "15.3.0",
     "package-json": "6.5.0",
     "simple-git": "2.9.0",
     "ts-node": "8.10.2",
