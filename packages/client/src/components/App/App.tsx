@@ -18,7 +18,7 @@ export const App = () => {
 
   return (
     <ApolloProvider client={client}>
-      <BrowserRouter>
+      <BrowserRouter basename={ document.querySelector('base')?.href }>
         <React.Fragment>
           <Route exact path="/">
             <Heatmap />
