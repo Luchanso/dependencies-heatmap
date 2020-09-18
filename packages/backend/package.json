@@ -16,7 +16,7 @@
     "del": "5.1.0",
     "graphql": "15.3.0",
     "package-json": "6.5.0",
-    "simple-git": "2.15.0",
+    "simple-git": "2.20.1",
     "ts-node": "9.0.0",
     "typescript": "3.9.7",
     "winston": "3.3.3"
