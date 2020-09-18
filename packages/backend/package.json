@@ -17,7 +17,7 @@
     "graphql": "15.3.0",
     "package-json": "6.5.0",
     "simple-git": "2.15.0",
-    "ts-node": "8.10.2",
+    "ts-node": "9.0.0",
     "typescript": "3.9.7",
     "winston": "3.3.3"
   },
