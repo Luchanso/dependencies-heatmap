@@ -8,8 +8,14 @@ docker pull uchanso/dependencies-heatmap-backend:0.1.0
 
 ### Client
 ```
-docker pull uchanso/dependencies-heatmap-client:0.1.1
+docker pull uchanso/dependencies-heatmap-client:1.0.1
+docker run -d -p 8080:80 --name dp-client dependencies-heatmap-client:1.0.0 --env BACKEND_URL=http://localhost:4000 BASENAME=/
 ```
+
+Where
+BACKEND_URL - path for GraphQL server, by default `http://localhost:4000`
+BASENAME - [app location](https://reactrouter.com/web/api/BrowserRouter/basename-string), by default is root `/`
+All environments is optional
 
 ## Development
 
