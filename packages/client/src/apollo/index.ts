@@ -4,12 +4,12 @@ import { resolvers } from './resolvers';
 
 type Cache = {};
 
-export function useApolloClientForProvider(): [ApolloClient<Cache>, boolean] {
+export function useApolloClientForProvider(backendUrl: string | undefined): [ApolloClient<Cache>, boolean] {
   const cache = new InMemoryCache();
 
   const client = new ApolloClient<Cache>({
     cache,
-    uri: process.env.REACT_APP_BACKEND_URL,
+    uri: backendUrl,
     resolvers
   });
 
