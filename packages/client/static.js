@@ -18,11 +18,10 @@ app.get(`*/config`, function (req, res) {
   });
 });
 
-app.use(function (req, res, next) {
+app.use(function (req, res) {
   res.sendFile(path.join(__dirname, "build", "index.html"));
-})
+});
 
 app.listen(PORT, () => {
   console.log(`Listening on port ${PORT}`);
 });
-
