@@ -1,6 +1,8 @@
-FROM nginx:1.19.1-alpine
+FROM node:14.11-alpine
 
-COPY replace-basepath.sh /usr/bin/
-COPY build /usr/share/nginx/html
+WORKDIR /src
 
-CMD /usr/bin/replace-basepath.sh && nginx -g 'daemon off;'
+COPY ./build .
+RUN yarn install --freeze-lock
+
+CMD ["yarn", "start"]
