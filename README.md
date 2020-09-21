@@ -3,12 +3,12 @@
 ## Use as docker
 ### Backend
 ```
-docker pull uchanso/dependencies-heatmap-backend:0.1.0
+docker pull luchanso/dependencies-heatmap-backend:0.1.0
 ```
 
 ### Client
 ```
-docker pull uchanso/dependencies-heatmap-client:0.1.1
+docker pull luchanso/dependencies-heatmap-client:0.1.1
 ```
 
 ## Development
