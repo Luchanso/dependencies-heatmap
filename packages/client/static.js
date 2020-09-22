@@ -1,9 +1,12 @@
 const express = require("express");
+const morgan = require('morgan');
 const path = require("path");
 const app = express();
 const PORT = process.env.PORT || 8080;
 const BACKEND_URL = process.env.BACKEND_URL || "http://localhost:4000";
 const BASENAME = process.env.BASENAME || "/";
+
+app.use(morgan('common'));
 
 app.use(BASENAME, express.static(path.join(__dirname, "build")));
 
