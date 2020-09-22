@@ -4,20 +4,22 @@ const path = require("path");
 const app = express();
 const PORT = process.env.PORT || 8080;
 const BACKEND_URL = process.env.BACKEND_URL || "http://localhost:4000";
-const BASENAME = process.env.BASENAME || "/";
+const FRONT_BASENAME = process.env.FRONT_BASENAME || "/";
+const BACK_BASENAME = process.env.BACK_BASENAME || "/";
 
 app.use(morgan('common'));
 
-app.use(BASENAME, express.static(path.join(__dirname, "build")));
+app.use(BACK_BASENAME, express.static(path.join(__dirname, "build")));
 
-app.get(BASENAME, function (req, res) {
+app.get(BACK_BASENAME, function (req, res) {
   res.sendFile(path.join(__dirname, "build", "index.html"));
 });
 
 app.get(`*/config`, function (req, res) {
   res.send({
     BACKEND_URL,
-    BASENAME,
+    BACK_BASENAME,
+    FRONT_BASENAME
   });
 });
 

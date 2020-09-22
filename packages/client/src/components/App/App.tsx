@@ -17,7 +17,7 @@ export const App = () => {
 
   return (
     <ApolloProvider client={client}>
-      <BrowserRouter basename={config.BASENAME}>
+      <BrowserRouter basename={config.FRONT_BASENAME}>
         <React.Fragment>
           <Switch>
             <Route exact path="/">

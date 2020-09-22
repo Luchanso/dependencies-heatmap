@@ -11,7 +11,8 @@ async function getConfig(): Promise<any> {
 async function getLocalhostConfig(): Promise<Config> {
   return {
     BACKEND_URL: process.env.REACT_APP_BACKEND_URL || 'http://localhost:4000',
-    BASENAME: '/'
+    FRONT_BASENAME: '/',
+    BACK_BASENAME: '/'
   }
 }
 
@@ -25,11 +26,12 @@ function ifElse<A, B>(state: boolean, a: A, b: B) {
 
 export type Config = {
   BACKEND_URL: string;
-  BASENAME: string;
+  FRONT_BASENAME: string;
+  BACK_BASENAME: string;
 }
 
 function isConfig(data: any | Config): data is Config {
-  if ((data as Config).BACKEND_URL && (data as Config).BASENAME) {
+  if ((data as Config).BACKEND_URL && (data as Config).FRONT_BASENAME) {
     return true;
   }
 
