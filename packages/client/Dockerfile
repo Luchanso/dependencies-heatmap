@@ -1,6 +1,15 @@
-FROM nginx:1.19.1-alpine
+FROM node:14.11-alpine
+WORKDIR /src
+COPY . .
+RUN yarn install --freeze-lock
+RUN yarn build --production
 
-COPY replace-basepath.sh /usr/bin/
-COPY build /usr/share/nginx/html
+# TODO: придумать что делать с зависимостью в виде epxress
+# FROM node:14.11-alpine
+# WORKDIR /src
+# COPY --from=builder /src/node_modules .
+# COPY --from=builder /src/package.json .
+# COPY --from=builder /src/build .
+# COPY --from=builder /src/static.js .
 
-CMD /usr/bin/replace-basepath.sh && nginx -g 'daemon off;'
+CMD ["yarn", "start-production"]

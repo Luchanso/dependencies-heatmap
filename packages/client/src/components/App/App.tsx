@@ -1,31 +1,35 @@
-import React from "react";
-import { BrowserRouter, Route } from "react-router-dom";
 import { ApolloProvider } from "@apollo/react-hooks";
+import React from "react";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { useApolloClientForProvider } from "../../apollo";
-import { Heatmap } from "../Heatmap/Heatmap";
+import { useServerConfig } from "../../hooks/useServerConfig";
 import { AddPage } from "../AddPage/AddPage";
+import { Heatmap } from "../Heatmap/Heatmap";
+import { NotFoundPage } from "../NotFoundPage";
 
 export const App = () => {
-  const [client, isLoading] = useApolloClientForProvider();
+  const config = useServerConfig();
+  const [client, isLoading] = useApolloClientForProvider(config?.BACKEND_URL);
 
-  if (isLoading || !client) {
-    return (
-      <div>
-        Loading...
-      </div>
-    )
+  if (isLoading || !client || !config) {
+    return <div>Loading...</div>;
   }
 
   return (
     <ApolloProvider client={client}>
-      <BrowserRouter basename={ document.querySelector('base')?.href }>
+      <BrowserRouter basename={config.FRONT_BASENAME}>
         <React.Fragment>
-          <Route exact path="/">
-            <Heatmap />
-          </Route>
-          <Route path="/add">
-            <AddPage />
-          </Route>
+          <Switch>
+            <Route exact path="/">
+              <Heatmap />
+            </Route>
+            <Route path="/add">
+              <AddPage />
+            </Route>
+            <Route>
+              <NotFoundPage />
+            </Route>
+          </Switch>
         </React.Fragment>
       </BrowserRouter>
     </ApolloProvider>
