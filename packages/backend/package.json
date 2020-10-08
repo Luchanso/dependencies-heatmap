@@ -23,7 +23,7 @@
   },
   "devDependencies": {
     "@types/btoa": "1.2.3",
-    "@types/node": "12.12.64",
+    "@types/node": "12.12.65",
     "@types/rimraf": "3.0.0",
     "casual": "1.6.2",
     "cross-env": "7.0.2"
