@@ -1,4 +1,4 @@
-FROM node:14.14-alpine
+FROM node:14.15-alpine
 WORKDIR /src
 COPY . .
 RUN yarn install --freeze-lock
