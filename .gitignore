@@ -65,3 +65,6 @@ temp/
 
 # vscode editor settings
 .vscode
+
+# webstorm editor settings
+.idea
