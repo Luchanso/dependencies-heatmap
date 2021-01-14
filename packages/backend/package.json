@@ -10,8 +10,8 @@
   },
   "dependencies": {
     "@luchanso/latest-version": "5.1.1",
-    "apollo-datasource": "0.7.2",
-    "apollo-server": "2.18.2",
+    "apollo-datasource": "0.7.3",
+    "apollo-server": "2.19.2",
     "btoa": "1.2.1",
     "del": "6.0.0",
     "graphql": "15.3.0",
