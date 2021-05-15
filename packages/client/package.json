@@ -12,7 +12,7 @@
     "debug": "4.2.0",
     "express": "4.17.1",
     "graphql": "15.3.0",
-    "graphql-tools": "6.2.4",
+    "graphql-tools": "7.0.5",
     "graphql.macro": "1.4.2",
     "morgan": "1.10.0",
     "react": "16.14.0",
