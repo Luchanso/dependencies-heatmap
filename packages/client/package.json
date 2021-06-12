@@ -19,7 +19,7 @@
     "react-dom": "16.14.0",
     "react-router-dom": "5.2.0",
     "react-scripts": "3.4.3",
-    "styled-components": "5.2.0",
+    "styled-components": "5.3.0",
     "qs": "6.9.4"
   },
   "homepage": ".",
@@ -55,7 +55,7 @@
     "@types/react": "17.0.0",
     "@types/react-dom": "16.9.8",
     "@types/react-router-dom": "5.1.7",
-    "@types/styled-components": "5.1.4",
+    "@types/styled-components": "5.1.10",
     "enzyme": "3.11.0",
     "enzyme-adapter-react-16": "1.15.5",
     "eslint-plugin-react-hooks": "4.2.0",
